@@ -1,13 +1,5 @@
 # SDSU Auto Schedule Planner MVP
 
-Run locally with:
-
-```bash
-cd scuba-sdsu-mvp
-npm start
-```
-
-Then open http://localhost:4173
 
 ## What changed in v0.2
 
