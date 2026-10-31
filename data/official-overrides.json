@@ -1,0 +1,17 @@
+{
+  "Spring 2027": {
+    "1026": {
+      "courseCode": "A E 331",
+      "source": "my.SDSU student registration page",
+      "verifiedAt": "2026-10-31",
+      "meetings": [
+        {
+          "days": ["M", "W"],
+          "start": "19:00",
+          "end": "20:15"
+        }
+      ],
+      "note": "Official my.SDSU time verified by user for STRM 2273, class #1026."
+    }
+  }
+}

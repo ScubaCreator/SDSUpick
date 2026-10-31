@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SDSU Schedule Planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">SDSU SCHEDULE PLANNER</div>
+      <h1>Build a conflict-free semester automatically.</h1>
+      <p id="termLine">Loading current term…</p><p class="subtle" id="sourceNote">Section times should always be verified against my.SDSU before registration.</p>
+    </div>
+    <div class="status"><span class="dot"></span><span id="dataStatus">Loading schedule</span></div>
+  </header>
+
+  <main>
+    <section class="panel hero-panel">
+      <div class="section-title">
+        <div><span class="step">1</span><h2>Choose courses</h2></div>
+        <button id="clearBtn" class="ghost">Clear</button>
+      </div>
+      <p class="subtle">Search SDSU classes directly, then add any recurring commitments that your class schedule needs to avoid.</p>
+
+      <div class="grid two">
+        <div>
+          <label>Core courses <span id="coreCount" class="counter">0</span></label>
+          <input id="coreSearch" class="search" placeholder="Search course code or title…" autocomplete="off" />
+          <div id="coreResults" class="search-results"></div>
+          <div id="coreChips" class="chips"></div>
+        </div>
+        <div>
+          <label>Electives <span id="electiveCount" class="counter">0</span></label>
+          <input id="electiveSearch" class="search" placeholder="Search course code or title…" autocomplete="off" />
+          <div id="electiveResults" class="search-results"></div>
+          <div id="electiveChips" class="chips"></div>
+          <label class="inline-label">Pick <input id="electivePick" type="number" min="0" value="0" /> electives for each schedule</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-title">
+        <div><span class="step">2</span><h2>Custom commitments</h2></div>
+        <span class="badge">optional</span>
+      </div>
+      <p class="subtle">Block off recurring times for work, sailing, practice, meetings, or anything else. Generated schedules will never overlap these times.</p>
+      <div class="commitment-form">
+        <label>Commitment name
+          <input id="commitmentName" type="text" placeholder="Sailing" maxlength="60" />
+        </label>
+        <div class="days-picker" aria-label="Commitment days">
+          <span class="field-label">Days</span>
+          <label><input type="checkbox" name="commitmentDay" value="M" /> Mon</label>
+          <label><input type="checkbox" name="commitmentDay" value="T" /> Tue</label>
+          <label><input type="checkbox" name="commitmentDay" value="W" /> Wed</label>
+          <label><input type="checkbox" name="commitmentDay" value="Th" /> Thu</label>
+          <label><input type="checkbox" name="commitmentDay" value="F" /> Fri</label>
+        </div>
+        <label>Start time
+          <input id="commitmentStart" type="time" />
+        </label>
+        <label>End time
+          <input id="commitmentEnd" type="time" />
+        </label>
+        <button id="addCommitmentBtn" type="button">Add commitment</button>
+      </div>
+      <div id="commitmentError" class="notice error hidden"></div>
+      <div id="commitmentList" class="commitment-list"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-title"><div><span class="step">3</span><h2>Generate schedules</h2></div></div>
+      <div class="filter-grid">
+        <label>No classes before <input id="afterTime" type="time" /></label>
+        <label>No classes after <input id="beforeTime" type="time" /></label>
+        <label>Avoid day
+          <select id="avoidDay"><option value="">None</option><option>M</option><option>T</option><option>W</option><option>Th</option><option>F</option></select>
+        </label>
+        <label>Online
+          <select id="onlineMode"><option value="allow">Allow</option><option value="none">No online</option><option value="prefer">Prefer online</option></select>
+        </label>
+      </div>
+      <button id="generateBtn" class="primary big">Generate up to 200 schedules</button>
+      <div id="generateError" class="notice error hidden"></div>
+    </section>
+
+    <section id="resultsSection" class="panel hidden">
+      <div class="section-title">
+        <div><span class="step">4</span><h2>Rank your options</h2></div>
+        <span id="scheduleCount" class="badge"></span>
+      </div>
+      <div class="weights">
+        <label>Professor rating <output id="ratingOut">3</output><input id="ratingWeight" type="range" min="0" max="5" value="3" /></label>
+        <label>Fewer campus days <output id="daysOut">3</output><input id="daysWeight" type="range" min="0" max="5" value="3" /></label>
+        <label>Later start <output id="startOut">2</output><input id="startWeight" type="range" min="0" max="5" value="2" /></label>
+        <label>Less gaps <output id="gapsOut">2</output><input id="gapsWeight" type="range" min="0" max="5" value="2" /></label>
+      </div>
+      <div class="results-toolbar">
+        <div><button id="betterBtn">← Better</button><button id="worseBtn" class="secondary">Worse →</button></div>
+        <div><button id="copyLinkBtn" class="secondary">Copy link</button><button id="saveBtn" class="secondary">Save image</button></div>
+      </div>
+      <div id="scheduleCard" class="schedule-card"></div>
+      <div class="pager"><button id="prevBtn" class="ghost">Previous</button><span id="pageText"></span><button id="nextBtn" class="ghost">Next</button></div>
+    </section>
+  </main>
+
+  <footer>Unofficial planning tool. Always verify final sections, prerequisites, seats, and registration details in my.SDSU.</footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

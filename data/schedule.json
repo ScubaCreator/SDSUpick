@@ -1,0 +1,30 @@
+{
+  "term": {"id":"2273","name":"Spring 2027","campus":"SDSU - San Diego Campus","source":"demo-normalized-data","updatedAt":"2026-10-31T21:45:00Z"},
+  "courses": [
+    {"code":"EE 310","title":"Electronic Circuits","sections":[
+      {"id":"EE310-01","classNumber":"12001","section":"01","instructor":"M. Chen","rating":4.6,"seats":9,"mode":"In Person","meetings":[{"days":["M","W"],"start":"10:00","end":"11:15","location":"E 201"}]},
+      {"id":"EE310-02","classNumber":"12002","section":"02","instructor":"A. Patel","rating":4.2,"seats":3,"mode":"In Person","meetings":[{"days":["T","Th"],"start":"13:00","end":"14:15","location":"E 201"}]}
+    ]},
+    {"code":"EE 330","title":"Signals and Systems","sections":[
+      {"id":"EE330-01","classNumber":"12110","section":"01","instructor":"S. Kim","rating":4.8,"seats":6,"mode":"In Person","meetings":[{"days":["M","W"],"start":"12:00","end":"13:15","location":"GMCS 305"}]},
+      {"id":"EE330-02","classNumber":"12111","section":"02","instructor":"J. Davis","rating":3.9,"seats":12,"mode":"Online","meetings":[{"days":["T","Th"],"start":"09:30","end":"10:45","location":"Online"}]}
+    ]},
+    {"code":"MATH 254","title":"Introduction to Linear Algebra","sections":[
+      {"id":"MATH254-03","classNumber":"10901","section":"03","instructor":"R. Alvarez","rating":4.4,"seats":14,"mode":"In Person","meetings":[{"days":["M","W","F"],"start":"11:00","end":"11:50","location":"GMCS 333"}]},
+      {"id":"MATH254-05","classNumber":"10903","section":"05","instructor":"T. Nguyen","rating":4.1,"seats":8,"mode":"In Person","meetings":[{"days":["T","Th"],"start":"11:00","end":"12:15","location":"GMCS 333"}]}
+    ]},
+    {"code":"AE 280","title":"Methods of Analysis","sections":[
+      {"id":"AE280-01","classNumber":"13021","section":"01","instructor":"L. Garcia","rating":4.0,"seats":7,"mode":"In Person","meetings":[{"days":["T","Th"],"start":"14:30","end":"15:45","location":"E 328"}]},
+      {"id":"AE280-02","classNumber":"13022","section":"02","instructor":"K. Wright","rating":4.7,"seats":2,"mode":"In Person","meetings":[{"days":["M","W"],"start":"14:00","end":"15:15","location":"E 328"}]}
+    ]},
+    {"code":"EE 420","title":"Digital Signal Processing","sections":[
+      {"id":"EE420-01","classNumber":"12420","section":"01","instructor":"P. Shah","rating":4.9,"seats":5,"mode":"In Person","meetings":[{"days":["T","Th"],"start":"15:30","end":"16:45","location":"E 423"}]}
+    ]},
+    {"code":"EE 430","title":"Communication Systems","sections":[
+      {"id":"EE430-01","classNumber":"12430","section":"01","instructor":"D. Foster","rating":4.3,"seats":10,"mode":"In Person","meetings":[{"days":["M","W"],"start":"16:00","end":"17:15","location":"E 423"}]}
+    ]},
+    {"code":"EE 440","title":"Control Systems","sections":[
+      {"id":"EE440-01","classNumber":"12440","section":"01","instructor":"C. Brooks","rating":3.8,"seats":15,"mode":"Online","meetings":[{"days":["T","Th"],"start":"16:00","end":"17:15","location":"Online"}]}
+    ]}
+  ]
+}
