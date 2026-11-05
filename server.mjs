@@ -1,3 +1,4 @@
+import { bundleSections } from './services/section-bundles.mjs';
 import http from 'node:http';
 import { readFile, stat, writeFile, mkdir } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
@@ -137,14 +138,15 @@ async function getCourse(code, term, slugHint='') {
     }));
     return {...section,...override,meetings,dataSource:'Official my.SDSU correction',officiallyVerified:true};
   });
-  return {code:cached.code,title:cached.title||meta?.title||'',sections,term,slug,termId:TERM_META[term]?.id||null};
+  const enrollmentOptions=bundleSections(sections, cached.code || code);
+  return {code:cached.code,title:cached.title||meta?.title||'',sections:enrollmentOptions,rawComponents:sections,term,slug,termId:TERM_META[term]?.id||null};
 }
 
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host}`);
     if (url.pathname === '/api/health') {
-      res.writeHead(200, {'content-type':'application/json'}); return res.end(JSON.stringify({ok:true, version:'0.2.0'}));
+      res.writeHead(200, {'content-type':'application/json'}); return res.end(JSON.stringify({ok:true, version:'0.5.0'}));
     }
     if (url.pathname === '/api/terms') {
       const terms=Object.entries(TERM_META).map(([name,meta])=>({name,...meta}));

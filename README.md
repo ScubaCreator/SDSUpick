@@ -1,5 +1,13 @@
 # SDSU Auto Schedule Planner MVP
 
+Run locally with:
+
+```bash
+cd scuba-sdsu-mvp
+npm start
+```
+
+Then open http://localhost:4173
 
 ## What changed in v0.2
 
@@ -38,3 +46,14 @@ The long-term fix is to replace ClassCatalog section times with SDSU's official 
 - The calendar automatically expands when a class or commitment falls outside the normal 8 AM-8 PM display window.
 
 Example: add `Sailing`, select Monday and Wednesday, set 12:00 PM to 3:00 PM, and the generator will exclude every schedule containing a class that overlaps that block.
+
+## v0.5 linked course components
+
+- Enrollment options can now contain multiple required components under one course choice (for example Lecture + Discussion + Laboratory).
+- The provider groups repeating component patterns into linked enrollment options instead of exposing each component as a standalone section.
+- A course with several ordinary sections of the same component type (for example three Lectures) still produces three independent choices.
+- Schedule generation evaluates the combined meeting times of every component in an enrollment option, so conflicts with any lecture, discussion, lab, or custom commitment reject that option.
+- Calendar cards show the component type and its actual class number for each meeting.
+- Official time corrections continue to apply at the individual class-number/component level before components are grouped.
+
+The grouping logic is isolated in `services/section-bundles.mjs` so it can later be replaced by explicit linked-component relationships from SDSU's official schedule source when available.
